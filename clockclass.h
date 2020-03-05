@@ -12,6 +12,7 @@ public:
 
 protected:
     void exposeEvent(QExposeEvent* event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent* event) Q_DECL_OVERRIDE;
 
 private:
     QBackingStore* m_backingStore;
