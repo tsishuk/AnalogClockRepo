@@ -30,7 +30,7 @@ void ClockClass::resizeEvent(QResizeEvent *event)
 }
 
 
-void ClockClass::exposeEvent(QExposeEvent *event)
+void ClockClass::exposeEvent(QExposeEvent *)
 {
     static int expose_counter=0;
     render();           // Отрисовка сразу

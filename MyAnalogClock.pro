@@ -4,3 +4,5 @@ HEADERS += \
 SOURCES += \
     main.cpp \
     clockclass.cpp
+
+QT += gui

@@ -8,14 +8,14 @@ class ClockClass : public QWindow
     Q_OBJECT
 public:
     ClockClass(QWindow* parent = 0);
-    void render(void);
+    virtual void render(void);
 
 public slots:
     void renderRequest(void);
 
 protected:
     bool event(QEvent *) Q_DECL_OVERRIDE;
-    void exposeEvent(QExposeEvent* event) Q_DECL_OVERRIDE;
+    void exposeEvent(QExposeEvent*) Q_DECL_OVERRIDE;
     void resizeEvent(QResizeEvent* event) Q_DECL_OVERRIDE;
 
 private:
