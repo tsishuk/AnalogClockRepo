@@ -1,7 +1,8 @@
 #include "clockclass.h"
 
 ClockClass::ClockClass(QWindow *parent)
-    :QWindow(parent)
+    :QWindow(parent),
+      m_pendingRequest(0)
 {
     m_backingStore = new QBackingStore(this);
     //m_backingStore->resize(QSize(300,300));
@@ -9,6 +10,17 @@ ClockClass::ClockClass(QWindow *parent)
 
     setGeometry(300,300,400,400);
     setTitle("This is clock");
+}
+
+
+bool ClockClass::event(QEvent *event)
+{
+    if (event->type() == QEvent::UpdateRequest){
+        render();
+        m_pendingRequest = 0;
+        return true;
+    }
+    return QWindow::event(event);
 }
 
 
@@ -21,8 +33,18 @@ void ClockClass::resizeEvent(QResizeEvent *event)
 void ClockClass::exposeEvent(QExposeEvent *event)
 {
     static int expose_counter=0;
-    render();
+    render();           // Отрисовка сразу
+    //renderRequest();  // Отложенная отрисовка (медленнее но вернее)
     qDebug()<<"Expose event #"<<expose_counter++;
+}
+
+
+void ClockClass::renderRequest()
+{
+    if (!m_pendingRequest){
+        m_pendingRequest = 1;
+        QCoreApplication::postEvent(this, new QEvent(QEvent::UpdateRequest));
+    }
 }
 
 
