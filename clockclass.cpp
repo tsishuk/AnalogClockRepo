@@ -60,14 +60,23 @@ void ClockClass::render()
     QPainter painter(device);
 
     painter.setFont(QFont("Times", 50, QFont::Bold));
+
+    //painter.fillRect(0, 0, width(), height(), QGradient::NightFade);
+
     painter.fillRect(0, 0, width(), height(),
-                     QBrush(Qt::darkCyan,Qt::Dense5Pattern));
-    painter.drawText(QRectF(0, 0, width(), height()), Qt::AlignCenter, "QWindow");
+                     QBrush(Qt::darkCyan,Qt::Dense4Pattern));
+
+    render(&painter);
+    painter.end();
 
     m_backingStore->endPaint();
     m_backingStore->flush(rect);
+}
 
-//     qDebug()<<"In render func";
+
+void ClockClass::render(QPainter* p)
+{
+    p->drawText(QRectF(0, 0, width(), height()), Qt::AlignCenter, "QWindow");
 }
 
 

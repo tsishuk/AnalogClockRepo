@@ -9,6 +9,7 @@ class ClockClass : public QWindow
 public:
     ClockClass(QWindow* parent = 0);
     virtual void render(void);
+    virtual void render(QPainter*);
 
 public slots:
     void renderRequest(void);

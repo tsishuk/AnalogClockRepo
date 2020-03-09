@@ -10,7 +10,7 @@ public:
 
 protected:
     void timerEvent(QTimerEvent*) Q_DECL_OVERRIDE;
-    void render(QPainter*) Q_DECL_OVERRIDE;
+    //void render(QPainter* p) Q_DECL_OVERRIDE;
 
 private:
     int m_timer_id;
@@ -33,10 +33,10 @@ void AnalogClock::timerEvent(QTimerEvent *event)
 }
 
 
-void AnalogClock::render(QPainter *)
-{
-    ;
-}
+//void AnalogClock::render(QPainter *p)
+//{
+//    ;
+//}
 
 
 
