@@ -5,7 +5,6 @@ ClockClass::ClockClass(QWindow *parent)
       m_pendingRequest(0)
 {
     m_backingStore = new QBackingStore(this);
-    //m_backingStore->resize(QSize(300,300));
     create();
 
     setGeometry(300,300,400,400);
